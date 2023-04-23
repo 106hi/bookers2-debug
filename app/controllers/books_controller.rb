@@ -10,6 +10,7 @@ before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
     @books = Book.all
     @book = Book.new
+    # @bookid = Book.find(params[:id])
   end
 
   def create
