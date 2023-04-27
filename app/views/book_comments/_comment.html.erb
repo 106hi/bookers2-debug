@@ -1,0 +1,17 @@
+<div>
+  <% book.book_comments.each do |book_comment| %>
+    <p class="mb-1"><%= image_tag book_comment.user.get_profile_image, size:"100x100" %><br><%= book_comment.user.name %></p>
+    <p class="text-break mb-0"><%= book_comment.comment %></p>
+    <% if book_comment.user == current_user %>
+      <button class="btn btn-danger btn-sm mb-4" type="button">
+        <%= link_to "Destroy", book_book_comment_path(book_comment.book,book_comment),method: :delete, class: 'text-light' %>
+      </button>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model:[book, book_comment],local: false do |f| %>
+    <%= f.text_area :comment, rows:'5' %>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>
