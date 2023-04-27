@@ -4,7 +4,7 @@
     <p class="text-break mb-0"><%= book_comment.comment %></p>
     <% if book_comment.user == current_user %>
       <button class="btn btn-danger btn-sm mb-4" type="button">
-        <%= link_to "Destroy", book_book_comment_path(book_comment.book,book_comment),method: :delete, class: 'text-light' %>
+        <%= link_to "Destroy", book_book_comment_path(book_comment.book,book_comment),method: :delete, remote:true, class: 'text-light' %>
       </button>
     <% end %>
   <% end %>
