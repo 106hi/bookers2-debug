@@ -6,6 +6,10 @@ class Book < ApplicationRecord
   validates :body,presence:true,length:{maximum:200}
   # validates :comment,presence:true
 
+  scope :created_today, -> {where(created_at: Time.zone.now.all_day)}
+  scope :created_yesterday, -> {where(created_at: 1.day.ago.all_day)}
+  # scope :created_this_week, -> {where(created_at: 6.day.ago.beginning_of_day. .Time.zone.now.end_of_day)}　←うまくいってないらしい
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
