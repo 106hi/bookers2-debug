@@ -85,17 +85,16 @@
         </tbody>
       </table>
       <canvas id="myChart"></canvas>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
       <script>
         $(document).on('turbolinks:load', function(){
-          var ctx = document.getElementByID("myChart");
+          var ctx = document.getElementById('myChart');
           var myChart = new Chart(ctx, {
             type: 'line',
             data: {
               labels: ['６日前', '５日前', '４日前', '３日前', '２日前', '１日前', '今日'],
-              datasets: [
-                {
-                  label: '投稿した本の数',
+              datasets: [{
+                label: '投稿した本の数',
                   data: [
                     <%= @six_days_ago_book.count %>,
                     <%= @five_days_ago_book.count %>,
@@ -105,29 +104,28 @@
                     <%= @yesterday_book.count %>,
                     <%= @today_book.count %>
                   ],
-                  borderColor: "rgba(0,0,255,1)",
-                  backgroundColor: "rgba(0,0,0,0)",
-                  lineTension: 0.3
-                  borderWidth:3
-                }
-              ],
+                backgroundColor: "rgba(0,0,0,0)",
+                borderColor: "rgba(0,0,255,1)",
+                tension: 0.4,
+                borderWidth: 3
+              }]
             },
             options: {
-              title: {
-                display: true,
-                text: '7日間の投稿数の比較'
-              },
-              responsive: true,
               scales: {
-                y: {
-                  max: 10
-                  beginAtZero: true
-                },
-                x: {
-                  stacked: true
-                },
+                yAxes: [{
+                  ticks: {
+                    max: 10,
+                    beginAtZero: true,
+                    stepSize: 1
+                  }
+                }]
               },
-            }
+    　         title: {
+                display: true,
+                fontSize: 18,
+                text: '7日間の投稿数の比較',
+              },
+            },
           });
         });
       </script>
