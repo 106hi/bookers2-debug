@@ -59,6 +59,31 @@
         </tbody>
       </table>
       </div>
+      <table class="table table-bordered">
+        <h4>7日間分の投稿数</h4>
+        <thead>
+          <tr>
+            <th style="width: 14%">６日前</th>
+            <th style="width: 14%">５日前</th>
+            <th style="width: 14%">４日前</th>
+            <th style="width: 14%">３日前</th>
+            <th style="width: 14%">２日前</th>
+            <th style="width: 14%">１日前</th>
+            <th style="width: 14%">今日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @six_days_ago_book.count %></td>
+            <td><%= @five_days_ago_book.count %></td>
+            <td><%= @four_days_ago_book.count %></td>
+            <td><%= @three_days_ago_book.count %></td>
+            <td><%= @two_days_ago_book.count %></td>
+            <td><%= @yesterday_book.count %></td>
+            <td><%= @today_book.count %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

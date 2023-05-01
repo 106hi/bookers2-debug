@@ -11,6 +11,11 @@ class Book < ApplicationRecord
 
   scope :created_today, -> {where(created_at: Time.zone.now.all_day)}
   scope :created_yesterday, -> {where(created_at: 1.day.ago.all_day)}
+  scope :created_2_days_ago, -> {where(created_at: 2.day.ago.all_day)}
+  scope :created_3_days_ago, -> {where(created_at: 3.day.ago.all_day)}
+  scope :created_4_days_ago, -> {where(created_at: 4.day.ago.all_day)}
+  scope :created_5_days_ago, -> {where(created_at: 5.day.ago.all_day)}
+  scope :created_6_days_ago, -> {where(created_at: 6.day.ago.all_day)}
   # scope :created_this_week, -> {where(created_at: 6.day.ago.beginning_of_day. .Time.zone.now.end_of_day)}　←うまくいってないらしい
   d = Time.zone.now
   scope :created_this_week, -> {where(created_at: d.beginning_of_week(:saturday)..d.end_of_week(:saturday))}
