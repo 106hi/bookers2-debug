@@ -37,7 +37,11 @@ class UsersController < ApplicationController
 
   def search
     @user = User.find(params[:user_id])
-    @books = @user.books.where(created_at: params[:created_at])
+    if params[:created_at] == ""
+      @books = "日付が選択されていません"
+    else
+      @books = @user.books.where(created_at: params[:created_at].to_date.all_day).count
+    end
   end
 
   private
