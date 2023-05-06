@@ -1,0 +1,12 @@
+<% unless user.id == current_user.id %>
+  <% if (current_user.following? user) && (user.following? current_user) %>
+    <% if is_room == true %>
+      <%= link_to 'chatへ', room_path(room_id) %>
+    <% else %>
+      <%= fields_for entry do |e| %>
+        <%= e.hidden_field :user_id, value: user.id %>
+      <% end %>
+      <%= link_to "chatを始める", rooms_path, method: :post %>
+    <% end %>
+  <% end %>
+<% end %>
